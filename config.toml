@@ -1,0 +1,46 @@
+MAX_LOOP = 5
+MAX_CHARS = 10000
+
+LLM_MODEL = "freellmapi"
+
+[models.minmax]
+provider = "MinMax"
+url = "https://openrouter.ai/api/v1"
+api = "OPENROUTER_API_KEY"
+name = "minimax/minimax-m2.5:free"
+temperature = 0.3
+max_tokens = 10000
+
+[models.gemini]
+provider = "Gemini"
+url = "https://generativelanguage.googleapis.com/v1beta/"
+api = "GOOGLE_AI_STUDIO_3"
+name = "gemini-3-flash-preview"
+temperature = 0.3
+max_tokens = 10000
+
+
+[models.glm]
+provider = "Glm"
+url = "https://router.huggingface.co/v1"
+api = "HF_TOKEN"
+name = "zai-org/GLM-5.1:fireworks-ai"
+temperature = 0.3
+max_tokens = 10000
+
+
+[models.qwen]
+provider = "Qwen"
+url = "https://router.huggingface.co/v1"
+api = "HF_TOKEN_2"
+name = "Qwen/Qwen3.6-35B-A3B:featherless-ai"
+temperature = 0.3
+max_tokens = 10000
+
+[models.freellmapi]
+provider = "freellmapi"
+url = "https://freellmapi-seyc.onrender.com/v1"
+api = "FREE_LLM_API"
+name = "auto"
+temperature = 0.3
+max_tokens = 10000
