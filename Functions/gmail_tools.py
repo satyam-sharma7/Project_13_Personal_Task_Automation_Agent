@@ -9,14 +9,15 @@ def read_mail(n=5):
         gmail_service.users().messages().list(userId="me", labelIds=["INBOX"]).execute()
     )
     messages = results.get("messages", [])
+    inbox = []
     for message in messages:
         if n>0:
-            print(f'Message ID: {message["id"]}')
             msg = (
                 gmail_service.users().messages().get(userId="me", id=message["id"]).execute()
             )
-            print(f'  Subject: {msg["snippet"]}')
+            inbox.append({msg["snippet"]})
             n -=1
+    return inbox
 
 
 def send_mail(to, subject, body):
@@ -27,8 +28,9 @@ def send_mail(to, subject, body):
     
     # Gmail API requires base64 encoding
     encoded_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
-    gmail_service.users().messages().send(userId="me", body=encoded_message).execute()
-    print(f"Message Sent to: {to}")
+    return gmail_service.users().messages().send(userId="me", body=encoded_message).execute()
+    
+
 
 
 def search_mail():
@@ -76,7 +78,7 @@ send_mail_schema = {
                     "description": "The message that you want to send.",
                 }
             },
-            "required": ["sign"],
+            "required": ["to", "subject", "body"],
         }
     }
 }

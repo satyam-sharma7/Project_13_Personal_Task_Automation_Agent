@@ -1,4 +1,4 @@
-MAX_LOOP = 5
+MAX_LOOP = 3
 MAX_CHARS = 10000
 
 LLM_MODEL = "freellmapi"
