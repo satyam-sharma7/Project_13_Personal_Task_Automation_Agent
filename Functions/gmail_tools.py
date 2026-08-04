@@ -15,7 +15,7 @@ def read_mail(n=5):
             msg = (
                 gmail_service.users().messages().get(userId="me", id=message["id"]).execute()
             )
-            inbox.append({msg["snippet"]})
+            inbox.append({"id": message["id"], "snippet": msg["snippet"]})
             n -=1
     return inbox
 

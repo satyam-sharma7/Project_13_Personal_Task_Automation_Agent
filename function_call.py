@@ -24,7 +24,7 @@ def select_service(function_call_part):
     tool_name = function_call_part.name
     args_dict = json.loads(function_call_part.arguments)
 
-    entry = TOOL_REGISTRY[tool_name]
+    entry = TOOL_REGISTRY.get(tool_name)
     if entry is None:
         return f"Error: unknown tool '{tool_name}'"
 

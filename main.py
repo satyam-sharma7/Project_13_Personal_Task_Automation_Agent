@@ -31,9 +31,9 @@ messages = [{"role":"system", "content":SYSTEM_PROMPT}, {"role":"user", "content
 # send birthday invite message to satyamn8n@gmail.com from raghav birthday venue is raghav's house at 8 pm
 
 
-while MAX_LOOP >= 0:
+while MAX_LOOP > 0:
     print(MAX_LOOP)
-    if MAX_LOOP == 0:
+    if MAX_LOOP == 1:
         messages[0]["content"] += "Last attempt exhausted tell user why task couldn't be completed."
     response = client.chat.completions.create(
         model=LLM_MODEL['name'],
